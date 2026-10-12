@@ -1,3 +1,14 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#050605">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="全校屍變">
+<meta name="description" content="十月九日，第七節的下課鐘沒有響。校園恐怖生存遊戲《全校屍變：第八節》。">
 <title>全校屍變：第八節</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -190,7 +201,7 @@ html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);overflow:hid
 @keyframes warnP{from{opacity:.55;transform:scale(.98)}to{opacity:1;transform:scale(1.03)}}
 #jump{position:absolute;inset:0;pointer-events:none;display:grid;place-items:center;background:rgba(40,0,0,.4)}
 #jumpCv{height:min(96vh,118vw);width:auto;aspect-ratio:600/720;max-width:100%}
-@media (max-width:720px){#face{top:calc(env(safe-area-inset-top,0px) + 232px);width:84px}}
+@media (max-width:720px) and (orientation:portrait){#face{top:calc(env(safe-area-inset-top,0px) + 232px);width:84px}}
 #bossHint{font-family:var(--f-chalk);font-size:15px;color:#ffe2a8;text-shadow:0 1px 6px #000;text-align:center;margin-top:2px}
 #bossHint.alert{color:#ff6a58;animation:warnP .35s ease-in-out infinite alternate}
 #tip{position:absolute;inset:0;display:grid;place-items:center;padding:16px;background:rgba(8,0,0,.78);pointer-events:auto}
@@ -286,7 +297,7 @@ html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);overflow:hid
 #noteTitle{font-weight:700;font-size:19px;margin-bottom:6px}
 #noteBody{white-space:pre-wrap;margin:0}
 #note button{margin-top:14px;font-family:var(--f-body);font-size:14px;background:#262320;color:#d9d4c3;border:0;padding:8px 18px;cursor:pointer}
-@media (max-width:720px){
+@media (max-width:720px) and (orientation:portrait){
   #obj{max-width:none;left:16px;right:16px;transform:none;top:calc(env(safe-area-inset-top,0px) + 124px);font-size:13px;padding:6px 10px 7px}
   #obj li.now{font-size:14px}
   #boss{top:calc(env(safe-area-inset-top,0px) + 226px)}
@@ -297,6 +308,76 @@ html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);overflow:hid
   #prompt{bottom:calc(env(safe-area-inset-bottom,0px) + 236px);max-width:calc(100% - 32px);white-space:normal}
   #cutbar,#healbar{bottom:calc(env(safe-area-inset-bottom,0px) + 296px)}
   .lead{padding-right:2.4em}
+}
+
+/* ===== mobile friendliness ===== */
+button,a{-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}
+.menu,.tipcard{max-height:calc(100vh - 24px);max-height:calc(100dvh - 24px);-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+.rotHint{display:flex;gap:10px;align-items:center;margin:0;padding:8px 12px;border:1px dashed rgba(240,217,138,.45);background:rgba(30,26,12,.55);color:#f3e7c2;font-size:14px;line-height:1.5;width:max-content;max-width:100%;box-sizing:border-box}
+.rotHint[hidden]{display:none}
+.rotHint b{flex:0 0 auto;width:12px;height:20px;border:2px solid var(--chalk-yel);border-radius:3px;box-sizing:border-box;position:relative;animation:rotSpin 2.6s ease-in-out infinite}.rotHint b::after{content:'';position:absolute;left:50%;bottom:1px;width:3px;height:2px;margin-left:-1.5px;background:var(--chalk-yel);border-radius:1px}
+.rotHint em{font-style:normal;color:var(--chalk-yel);font-weight:700}
+@keyframes rotSpin{0%,35%{transform:rotate(0)}55%,100%{transform:rotate(-90deg)}}
+@media (orientation:landscape){.rotHint{display:none}}
+@media (max-width:720px) and (orientation:portrait){
+  .tcard{grid-template-columns:1fr;padding:12px 14px}
+  .tcard i{grid-row:auto;grid-column:1;align-self:start}
+  .tcard b{font-size:18px}
+  #inv{top:calc(env(safe-area-inset-top,0px) + 232px);right:12px;gap:4px}
+}
+/* phones held sideways (short screens) */
+@media (max-height:520px) and (orientation:landscape){
+  .cover-ui{justify-content:flex-start;overflow-y:auto;gap:7px;padding:calc(env(safe-area-inset-top,0px) + 10px) max(18px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 12px) max(18px,env(safe-area-inset-left,0px));background:linear-gradient(90deg,rgba(0,0,0,.92) 0%,rgba(0,0,0,.7) 55%,rgba(0,0,0,.1) 100%)}
+  .cover-ui>:first-child{margin-top:auto}
+  .eyebrow{font-size:10.5px}
+  .kicker{font-size:15px;margin:0 0 2px 2px}
+  .logo{font-size:clamp(46px,15vh,76px)}
+  .stamp{font-size:12px;padding:3px 6px}
+  .tag{font-size:14px;line-height:1.5}
+  .crow{gap:8px}
+  .cbtn{font-size:14px;letter-spacing:.14em;padding:9px 14px}
+  .credit{margin:0;padding:5px 12px 5px 10px;font-size:12px}
+  .credit b{font-size:20px}
+  .cnote{font-size:11px;line-height:1.5}
+  .helpbox,#tut,#tip,#phone{padding:10px}
+  .menu{padding:16px 18px 14px;gap:9px}
+  .menu h2{font-size:24px;margin-top:-4px}
+  .mbtn{padding:9px 14px;font-size:15px}
+  .tipcard{padding:14px 18px;gap:8px}
+  .tipcard h2{font-size:24px}
+  .tlist{gap:8px;margin:6px 0}
+  .tcard{padding:9px 14px}
+  .tcard b{font-size:17px}
+  .tcard span{font-size:13px}
+  /* HUD */
+  .vitals{left:max(10px,env(safe-area-inset-left,0px));top:calc(env(safe-area-inset-top,0px) + 8px);width:142px;padding:5px 7px;gap:3px}
+  .vitals canvas{width:126px;height:28px}
+  #obj{top:calc(env(safe-area-inset-top,0px) + 8px);max-width:min(420px,calc(100% - 400px));font-size:13px;padding:5px 10px 6px}
+  #obj li:not(.now){display:none}
+  #obj li.now{font-size:14px}
+  #pauseBtn{top:calc(env(safe-area-inset-top,0px) + 8px);right:max(10px,env(safe-area-inset-right,0px))}
+  #inv{top:calc(env(safe-area-inset-top,0px) + 58px);right:max(10px,env(safe-area-inset-right,0px));gap:4px;transform:scale(.88);transform-origin:top right}
+  #face{left:max(10px,env(safe-area-inset-left,0px));top:calc(env(safe-area-inset-top,0px) + 108px);width:62px}
+  #face span{font-size:9px}
+  #boss{top:calc(env(safe-area-inset-top,0px) + 62px);width:min(360px,calc(100% - 420px))}
+  #msg{left:calc(50% - 45px);bottom:calc(env(safe-area-inset-bottom,0px) + 70px);width:min(520px,calc(100% - 400px));font-size:14px}
+  #prompt{left:calc(50% - 45px);bottom:calc(env(safe-area-inset-bottom,0px) + 22px);max-width:calc(100% - 400px);white-space:normal;text-align:center}
+  #cutbar,#healbar{bottom:calc(env(safe-area-inset-bottom,0px) + 12px)}
+  #stick{left:calc(env(safe-area-inset-left,0px) + 18px);bottom:calc(env(safe-area-inset-bottom,0px) + 16px);width:120px;height:120px}
+  .tbtns{right:calc(env(safe-area-inset-right,0px) + 14px);bottom:calc(env(safe-area-inset-bottom,0px) + 14px)}
+  .tsmall{right:calc(env(safe-area-inset-right,0px) + 166px);bottom:calc(env(safe-area-inset-bottom,0px) + 14px);flex-direction:column;gap:8px}
+  .tsmall button{height:40px;min-width:62px}
+  #chap{top:18%}
+  #chap h2{font-size:clamp(36px,12vh,60px)}
+  .dlg-box{bottom:calc(env(safe-area-inset-bottom,0px) + 8px);gap:12px;width:calc(100% - 20px)}
+  #dlgCv{width:clamp(70px,22vh,104px)}
+  .dlg-main{padding:9px 14px 11px}
+  .dlg-name b{font-size:17px}
+  #dlgText{font-size:15px;line-height:1.6;min-height:3em}
+  #dlgChoices{gap:6px;margin-top:6px}
+  #dlgChoices button{font-size:15px;padding:7px 12px}
+  #encCv{width:auto;height:min(300px,62vh)}
+  #fpBtns button{font-size:16px;padding:12px 18px}
 }
 </style>
 
@@ -396,7 +477,9 @@ html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);overflow:hid
         <button class="cbtn" id="chapBtn" type="button">選擇章節</button>
         <button class="cbtn" id="theaterBtn" type="button">動畫回放</button>
         <button class="cbtn" id="galBtn" type="button">角色介紹</button>
+        <button class="cbtn fsb" id="fsBtn" type="button" hidden>全螢幕</button>
       </div>
+      <p class="rotHint" id="rotHint" hidden><b aria-hidden="true"></b><span>把手機<em>橫放</em>玩，畫面比較大、比較好操作。</span></p>
       <p class="credit">導演　<b>斬星慎</b></p>
       <p class="cnote">建議戴耳機遊玩。內含血腥畫面。<br>沒有聲音的話：iPhone 請先關掉側邊的靜音開關，並把音量調大。</p>
     </div>
@@ -436,6 +519,7 @@ html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);overflow:hid
         <div id="mHelpBox" hidden></div>
         <button class="mbtn" id="mRetry" type="button">從本章開頭重來</button>
         <button class="mbtn" id="mRestart" type="button">從第一章重新開始</button>
+        <button class="mbtn fsb" id="mFs" type="button" hidden>全螢幕</button>
         <button class="mbtn" id="mQuit" type="button">離開遊戲，回到標題</button>
       </div>
     </div>
@@ -1656,12 +1740,13 @@ function drawCover(dt){
   document.documentElement.style.setProperty('--grunge',`url(${c.toDataURL()})`);})();
 
 // ================= controls / menu
-const CONTROLS=`<p class="ctl-h">鍵盤／滑鼠</p><dl class="ctl"><dt>WASD／方向鍵</dt><dd>移動</dd><dt>滑鼠</dt><dd>瞄準手電筒</dd><dt>Shift</dt><dd>奔跑（腳步聲很大）</dd><dt>空白鍵／左鍵</dt><dd>推開殭屍；拿到鐵管後可以攻擊</dd><dt>E</dt><dd>撿東西、開門、讀紙條、跟躲起來的人說話；剪鐵鍊要按住</dd><dt>1／2</dt><dd>對話時選擇回答</dd><dt>Q</dt><dd>用繃帶包紮</dd><dt>F</dt><dd>開關手電筒</dd><dt>Esc／P</dt><dd>暫停</dd></dl><p class="ctl-h">手機</p><dl class="ctl"><dt>左下搖桿</dt><dd>移動，手電筒會照向移動方向</dd><dt>推／打</dt><dd>自動對準最近的殭屍</dd><dt>奔跑</dt><dd>切換跑步</dd><dt>互動</dt><dd>靠近東西會發亮並顯示「撿起／對話／開門」，點它或點畫面上的黃色提示；撬門、剪鐵鍊要按住</dd><dt>右上 ❚❚</dt><dd>暫停</dd></dl><p class="ctl-h">提示</p><dl class="ctl"><dt>聲音</dt><dd>牠們聽得到腳步聲，也看得到你的光。</dd><dt>頭目</dt><dd>徒手推不動，先找鐵管。林老師點名時不要動；阿坤伯衝撞撞到牆會暈，他拖過的血跡很滑；校長的聲波會震暈你；保健室阿姨會讓手電筒突然熄滅。</dd></dl>`;
+const CONTROLS0=`<p class="ctl-h">鍵盤／滑鼠</p><dl class="ctl"><dt>WASD／方向鍵</dt><dd>移動</dd><dt>滑鼠</dt><dd>瞄準手電筒</dd><dt>Shift</dt><dd>奔跑（腳步聲很大）</dd><dt>空白鍵／左鍵</dt><dd>推開殭屍；拿到鐵管後可以攻擊</dd><dt>E</dt><dd>撿東西、開門、讀紙條、跟躲起來的人說話；剪鐵鍊要按住</dd><dt>1／2</dt><dd>對話時選擇回答</dd><dt>Q</dt><dd>用繃帶包紮</dd><dt>F</dt><dd>開關手電筒</dd><dt>Esc／P</dt><dd>暫停</dd></dl><p class="ctl-h">手機</p><dl class="ctl"><dt>左下搖桿</dt><dd>移動，手電筒會照向移動方向</dd><dt>推／打</dt><dd>自動對準最近的殭屍</dd><dt>奔跑</dt><dd>切換跑步</dd><dt>互動</dt><dd>靠近東西會發亮並顯示「撿起／對話／開門」，點它或點畫面上的黃色提示；撬門、剪鐵鍊要按住</dd><dt>右上 ❚❚</dt><dd>暫停</dd></dl><p class="ctl-h">提示</p><dl class="ctl"><dt>聲音</dt><dd>牠們聽得到腳步聲，也看得到你的光。</dd><dt>頭目</dt><dd>徒手推不動，先找鐵管。林老師點名時不要動；阿坤伯衝撞撞到牆會暈，他拖過的血跡很滑；校長的聲波會震暈你；保健室阿姨會讓手電筒突然熄滅。</dd></dl>`;
+const CONTROLS=(()=>{if(!matchMedia('(pointer:coarse)').matches)return CONTROLS0;const a=CONTROLS0.indexOf('<p class="ctl-h">手機</p>'),b=CONTROLS0.indexOf('<p class="ctl-h">提示</p>');return CONTROLS0.slice(a,b).replace('>手機<','>手機操作<')+CONTROLS0.slice(b)+CONTROLS0.slice(0,a).replace('>鍵盤／滑鼠<','>接鍵盤時（鍵盤／滑鼠）<');})();
 $('helpList').innerHTML=CONTROLS;$('mHelpBox').innerHTML=CONTROLS;
 let menuOpen=false;
-function openMenu(){if(!running||cutOn||menuOpen||(P&&P.dead))return;menuOpen=true;paused=true;$('menu').hidden=false;$('mHelpBox').hidden=true;$('mHelpBox').innerHTML=CONTROLS+Object.keys(tipsShown).map(k=>`<p class="ctl-h">${TIPS[k].t}</p><dl class="ctl">${TIPS[k].items.map(([h,b])=>`<dt>${h}</dt><dd>${b}</dd>`).join('')}</dl>`).join('');$('mResume').focus();if(AC)AC.suspend();}
+function openMenu(){if(!running||cutOn||menuOpen||(P&&P.dead))return;menuOpen=true;paused=true;$('menu').hidden=false;$('mHelpBox').hidden=true;$('mHelpBox').innerHTML=CONTROLS+Object.keys(tipsShown).map(k=>`<p class="ctl-h">${TIPS[k].t}</p><dl class="ctl">${TIPS[k].items.map(([h,b])=>`<dt>${h}</dt><dd>${b}</dd>`).join('')}</dl>`).join('');$('mResume').focus({preventScroll:true});if(AC)AC.suspend();}
 function closeMenu(){if(!menuOpen)return;menuOpen=false;$('menu').hidden=true;paused=!$('note').hidden||!!dlg||chapOn||tipOn;if(AC)AC.resume();for(const k in keys)keys[k]=false;}
-function toTitle(){fp=null;$('fp').hidden=true;endOn=false;cine=null;rc=null;rcActors=[];scn=null;gore=[];camZ=camZT=1;$('cine').hidden=true;$('app').classList.remove('cineOn');menuOpen=false;dlg=null;$('dlg').hidden=true;$('menu').hidden=true;running=false;paused=false;cutOn=false;intro=null;chapOn=false;parts=[];jumpT=0;$('jump').hidden=true;setGrade(0);setVig(0);setBed(0);tipOn=false;['cut','hud','touch','end','enc','note','truth','chapScr','outro','tut','tip'].forEach(id=>$(id).hidden=true);$('title').hidden=false;setTension(0);if(AC&&AC.state==='suspended')AC.resume();$('startBtn').focus();}
+function toTitle(){fp=null;$('fp').hidden=true;endOn=false;cine=null;rc=null;rcActors=[];scn=null;gore=[];camZ=camZT=1;$('cine').hidden=true;$('app').classList.remove('cineOn');menuOpen=false;dlg=null;$('dlg').hidden=true;$('menu').hidden=true;running=false;paused=false;cutOn=false;intro=null;chapOn=false;parts=[];jumpT=0;$('jump').hidden=true;setGrade(0);setVig(0);setBed(0);tipOn=false;['cut','hud','touch','end','enc','note','truth','chapScr','outro','tut','tip'].forEach(id=>$(id).hidden=true);$('title').hidden=false;setTension(0);if(AC&&AC.state==='suspended')AC.resume();$('startBtn').focus({preventScroll:true});}
 
 // ================= emblems / outro
 function drawEmblem(c,kind,p,t){const k=c.canvas.width/480;c.setTransform(1,0,0,1,0,0);c.clearRect(0,0,c.canvas.width,c.canvas.height);c.setTransform(k,0,0,k,0,0);
@@ -1836,7 +1921,7 @@ let endOn=false,endT2=0,endFired={};const endOC=document.createElement('canvas')
 const NURSE_H=Object.assign({},HERO,{style:'bun',shirt:'#eceae2',pants:'#d6d4cc',seed:55,collar:true});
 const SUIT={skin:['#e6e6df','#a9aaa2','#f6f6f0'],hair:'#e6e6df',style:'short',shirt:'#e6e6df',pants:'#dcdcd4',collar:false,eyes:'human',seed:9,spots:[]};
 function playEnd(){vid('third');endOn=true;endT2=0;endFired={};outroFired={};$('cut').hidden=false;$('skip').textContent='跳過 ▸';$('hud').hidden=true;$('touch').hidden=true;setGrade(0);}
-function finishEnd(){if(!endOn)return;endOn=false;vidStop('third');$('cut').hidden=true;$('sub').textContent='';if(replay){endReplay();return;}$('end').hidden=false;$('retryBtn').hidden=true;$('againBtn').focus();}
+function finishEnd(){if(!endOn)return;endOn=false;vidStop('third');$('cut').hidden=true;$('sub').textContent='';if(replay){endReplay();return;}$('end').hidden=false;$('retryBtn').hidden=true;$('againBtn').focus({preventScroll:true});}
 function offKey(key,t,w,h){const c=endOC.getContext('2d');c.setTransform(1,0,0,1,0,0);c.clearRect(0,0,600,750);c.save();c.scale(600/w,750/h);drawKey(c,w,h,key,t);c.restore();return endOC;}
 function suitMan(c,x,y,S,t,beam){c.save();c.translate(x,y);c.scale(S,S);c.fillStyle='rgba(0,0,0,.45)';c.beginPath();c.ellipse(0,0,15,4,0,0,TAU);c.fill();
   const b=Math.sin(t*2+x)*.6;c.fillStyle=vg(c,-11,11,'#e4e4dc');c.beginPath();c.moveTo(-10,0);c.lineTo(-11,-34);c.quadraticCurveTo(0,-40,11,-34);c.lineTo(10,0);c.closePath();c.fill();
@@ -1971,7 +2056,7 @@ function drawOutro(t){const c=$('outroCv').getContext('2d');drawEmblem(c,5,sm(1,
   once(1,()=>sfxChime(.8));once(4.1,()=>{sfxBoom(.9);sfxNoiseHit(400,1,.5,.3);});
   if(t>4.1){const q=sm(4.1,4.26,t),sc=2.4-1.4*q,jx=t<4.5?R(-3,3):0;c.save();c.translate(262+jx,252);c.rotate(-.18);c.scale(sc,sc);c.globalAlpha=q*.95;c.strokeStyle='rgb(200,30,22)';c.fillStyle='rgb(200,30,22)';c.lineWidth=7;c.beginPath();rrect(c,-140,-62,280,124,10);c.stroke();c.lineWidth=2;c.beginPath();rrect(c,-130,-52,260,104,6);c.stroke();
     c.textAlign='center';c.textBaseline='middle';c.font='900 84px "Noto Serif TC",serif';c.fillText('HX-7',0,-8);c.font='700 19px "Noto Sans TC",sans-serif';c.fillText('未 核 准　非 法 人 體 試 驗',0,40);c.restore();}
-  if(t>4.8)$('outroTxt').style.opacity=1;if(t>5.6&&$('outroNext').hidden){$('outroNext').hidden=false;$('outroNext').focus();}}
+  if(t>4.8)$('outroTxt').style.opacity=1;if(t>5.6&&$('outroNext').hidden){$('outroNext').hidden=false;$('outroNext').focus({preventScroll:true});}}
 function outroNext(){$('outro').hidden=true;$('truth').hidden=false;$('truth').querySelector('.report').scrollTop=0;$('truthNext').focus({preventScroll:true});}
 $('outroNext').addEventListener('click',outroNext);
 $('outro').addEventListener('click',e=>{if(e.target.id!=='outroNext'&&outroT>1&&outroT<5.6)outroT=5.6;});
@@ -2210,7 +2295,7 @@ function endRC(){const z=rc.z;for(const l of rc.L){const i=lights.indexOf(l);if(
 let phoneSeen=false;
 const PHONE_MSGS=[['sys','10 月 9 日（五）'],['林老師','15:05','明天第七節數學小考，範圍第三章。'],['林老師','15:06','17 號，你補交的作業放講桌上就好。'],['子瑜','15:21','老師你在哪'],['阿哲','15:24','誰在走廊上點名？？'],['子瑜','15:26','不要出聲'],['阿哲','15:29','有人在嗎'],['林老師','15:31','上課了。']];
 function openPhone(){phoneSeen=true;$('phBody').innerHTML=PHONE_MSGS.map(m=>m[0]==='sys'?`<p class="phSys">${m[1]}</p>`:`<div class="phMsg${m[0]==='林老師'?' t':''}"><i>${m[0]}　${m[1]}</i><span>${m[2]}</span></div>`).join('')+'<p class="phSys">已讀 3</p>';
-  $('phone').hidden=false;paused=true;requestAnimationFrame(()=>{$('phBody').scrollTop=99999;});sfxNoiseHit(90,1,.5,.25);setTimeout(()=>sfxNoiseHit(90,1,.5,.25),260);$('phClose').focus();}
+  $('phone').hidden=false;paused=true;requestAnimationFrame(()=>{$('phBody').scrollTop=99999;});sfxNoiseHit(90,1,.5,.25);setTimeout(()=>sfxNoiseHit(90,1,.5,.25),260);$('phClose').focus({preventScroll:true});}
 function closePhone(){if($('phone').hidden)return;$('phone').hidden=true;paused=menuOpen||!$('note').hidden||!!dlg||chapOn;for(const k in keys)keys[k]=false;showMsg('最後一則是三點三十一分。那時候，大家應該都已經……',4);}
 // ================= blood spray
 let gore=[],camZ=1,camZT=1;
@@ -2322,7 +2407,7 @@ const FP_SHEET=[1,0,1,1,0,1,0,0,1];
 function fpResize(){const cv2=$('fpCv');if(!cv2)return;cv2.width=Math.round(innerWidth*dpr);cv2.height=Math.round(innerHeight*dpr);}
 function startFP(skipIntro){const tries=fp?fp.tries:0;fp={st:skipIntro?'play':'intro',t:0,pos:0,cx:0,crawl:null,tries,holes:[],parts:[],flash:0,hEvt:false,key:false,air:1,hold:false,gasp:0,bo:null,boN:0,boT:R(8,10),note:'',noteT:0,ut:0,hider:{bed:2,state:'hide',tt:0,zl:lookFor('s','walker')},
   n:{x:3,tgt:2,act:'walk',t:0,face:-1,step:0},msg:'',ct:0,ot:0};
-  $('fp').hidden=false;$('fpIntro').hidden=!!skipIntro;$('app').classList.add('cineOn');fpResize();sfxStaticBurst();if(!skipIntro)$('fpGo').focus();}
+  $('fp').hidden=false;$('fpIntro').hidden=!!skipIntro;$('app').classList.add('cineOn');fpResize();sfxStaticBurst();if(!skipIntro)$('fpGo').focus({preventScroll:true});}
 function fpBegin(){if(!fp||fp.st!=='intro')return;fp.st='play';fp.t=0;$('fpIntro').hidden=true;showMsg('',0);}
 function fpZ(dx){return{x:P.x+dx*60,y:P.y-10};}
 function fpWatching(){const n=fp.n;if(n.act==='grab')return false;if(n.act==='dark')return false;if(n.act==='stabW'||n.act==='stab'||n.act==='pull'||n.act==='peekW')return false;if(n.act==='walk')return Math.sign(fp.cx-n.x)===n.face||Math.abs(fp.cx-n.x)<.6;return true;}
@@ -2759,7 +2844,7 @@ function showChoices(list){
   list.forEach((c,i)=>{const b=document.createElement('button');b.type='button';const ok=!(c.need==='band'&&P.band<=0);
     b.innerHTML=`<kbd>${i+1}</kbd><span></span>`;b.querySelector('span').textContent=c.t+(ok?'':'（你沒有繃帶）');b.disabled=!ok;
     b.addEventListener('click',e=>{e.stopPropagation();choose(i);});box.appendChild(b);});
-  const f=box.querySelector('button:not(:disabled)');if(f)f.focus();
+  const f=box.querySelector('button:not(:disabled)');if(f)f.focus({preventScroll:true});
 }
 function choose(i){if(!dlg||!dlg.choices)return;const c=dlg.choices[i];if(!c||(c.need==='band'&&P.band<=0))return;
   if(c.need==='band'){P.band--;invUI();}
@@ -2883,13 +2968,13 @@ function setObj(){const st=objSteps();const ci=st.findIndex(x=>!x.done);const cu
 function drawWaypoint(fc){if(!P||P.dead||!running||cutOn||cine||rc||scn)return;const st=objSteps().find(x=>!x.done);const g0=st&&st.tg();if(g0)drawPointer(fc,g0,'240,217,138','');if(P.bat<30){let bb=null,bd=1e9;for(const it of items)if(!it.taken&&it.t==='bat'){const dd=Math.hypot(it.x-P.x,it.y-P.y);if(dd<bd){bd=dd;bb=it;}}if(bb)drawPointer(fc,bb,'140,235,150','電池 ');}}
 function drawPointer(fc,g,rgb,lab){
   const s=zoom*camZ*dpr,W2=fxcv.width,H2=fxcv.height,cx2=W2/2,cy2=H2/2;const x=(g.x-cam.x)*s+cx2,y=(g.y-cam.y)*s+cy2;const d=Math.hypot(g.x-P.x,g.y-P.y)/40;
-  const mx=44*dpr,mt=(VW<=720?250:120)*dpr,mb=(VW<=720?250:90)*dpr;const inside=x>mx&&x<W2-mx&&y>mt&&y<H2-mb;const pu=.5+.5*Math.sin(time*4);
+  const por=VW<=720&&VH>=VW,sl=VH<=520&&VW>VH&&isTouch;const mxl=(sl?40:44)*dpr,mxr=(sl?210:44)*dpr,mt=(por?250:sl?92:120)*dpr,mb=(por?250:sl?150:90)*dpr;const inside=x>mxl&&x<W2-mxr&&y>mt&&y<H2-mb;const pu=.5+.5*Math.sin(time*4);
   fc.setTransform(1,0,0,1,0,0);fc.textAlign='center';fc.textBaseline='middle';fc.font=`600 ${12*dpr}px "Noto Sans TC",sans-serif`;
   const col=a=>`rgba(${rgb},${a})`;
   if(inside){if(d<1.3)return;fc.strokeStyle=col(.45+.4*pu);fc.lineWidth=2*dpr;fc.beginPath();fc.arc(x,y,(13+pu*6)*dpr,0,TAU);fc.stroke();fc.strokeStyle=col(.25);fc.beginPath();fc.arc(x,y,(24+pu*8)*dpr,0,TAU);fc.stroke();
     const ay=y-(36+pu*5)*dpr;fc.fillStyle=col(.95);fc.beginPath();fc.moveTo(x,ay+9*dpr);fc.lineTo(x-8*dpr,ay-3*dpr);fc.lineTo(x+8*dpr,ay-3*dpr);fc.closePath();fc.fill();fc.strokeStyle='rgba(0,0,0,.7)';fc.lineWidth=1.5*dpr;fc.stroke();
     fc.fillStyle='rgba(0,0,0,.75)';fc.fillText(lab+Math.round(d)+' 公尺',x+1,ay-12*dpr+1);fc.fillStyle=col(1);fc.fillText(lab+Math.round(d)+' 公尺',x,ay-12*dpr);}
-  else{const ang=Math.atan2(y-cy2,x-cx2),co=Math.cos(ang),si=Math.sin(ang);const tt=Math.min(Math.abs(co)>1e-3?(co>0?(W2-mx-cx2):(cx2-mx))/Math.abs(co):1e9,Math.abs(si)>1e-3?(si>0?(H2-mb-cy2):(cy2-mt))/Math.abs(si):1e9);
+  else{const ang=Math.atan2(y-cy2,x-cx2),co=Math.cos(ang),si=Math.sin(ang);const tt=Math.min(Math.abs(co)>1e-3?(co>0?(W2-mxr-cx2):(cx2-mxl))/Math.abs(co):1e9,Math.abs(si)>1e-3?(si>0?(H2-mb-cy2):(cy2-mt))/Math.abs(si):1e9);
     const px=cx2+co*tt,py=cy2+si*tt;fc.save();fc.translate(px,py);fc.rotate(ang);const k=(1+pu*.15)*dpr;fc.fillStyle=col(.95);fc.strokeStyle='rgba(0,0,0,.75)';fc.lineWidth=1.5*dpr;fc.beginPath();fc.moveTo(16*k,0);fc.lineTo(-8*k,-11*k);fc.lineTo(-3*k,0);fc.lineTo(-8*k,11*k);fc.closePath();fc.fill();fc.stroke();fc.restore();
     const lx=px-co*26*dpr,ly=py-si*26*dpr;fc.fillStyle='rgba(0,0,0,.75)';fc.fillText(lab+Math.round(d)+' 公尺',lx+1,ly+1);fc.fillStyle=col(1);fc.fillText(lab+Math.round(d)+' 公尺',lx,ly);}
 }
@@ -2941,7 +3026,7 @@ let tlCache='';
 function touchLabels(verb,ready){const atk=P.pipe?'攻擊':'推開',heal=`包紮<span>×${P.band}</span>`,light=`手電筒<span>${P.flash?'開':'關'}</span>`;const key=verb+ready+atk+P.band+P.flash;if(key===tlCache)return;tlCache=key;
   const u=$('tUse');u.textContent=verb;u.classList.toggle('ready',ready);$('tAtk').innerHTML=atk;$('tHeal').innerHTML=heal;$('tHeal').classList.toggle('off',P.band<=0);$('tLight').innerHTML=light;$('tLight').classList.toggle('off',!P.flash);}
 let tutShown=false;try{tutShown=localStorage.getItem('fx_tut')==='1';}catch(e){}
-function maybeTut(){if(!isTouch||tutShown||!running)return;tutShown=true;try{localStorage.setItem('fx_tut','1');}catch(e){}$('tut').hidden=false;paused=true;$('tutOk').focus();}
+function maybeTut(){if(!isTouch||tutShown||!running)return;tutShown=true;try{localStorage.setItem('fx_tut','1');}catch(e){}$('tut').hidden=false;paused=true;$('tutOk').focus({preventScroll:true});}
 $('tutOk').addEventListener('click',()=>{$('tut').hidden=true;paused=menuOpen||!$('note').hidden||!!dlg||chapOn;});
 function closeChapScr(){if(!chapOn)return;chapOn=false;$('chapScr').hidden=true;paused=menuOpen||!$('note').hidden||!!dlg;if(chap===1)maybeTut();for(const k in keys)keys[k]=false;}
 $('chapScr').addEventListener('click',()=>{if(chapScrT>.8)closeChapScr();});
@@ -3414,7 +3499,7 @@ const TIPS={
 let tipOn=false,tipsShown={};
 function showTip(k){if(!TIPS[k]||tipsShown[k])return;tipsShown[k]=true;const T2=TIPS[k];$('tipTitle').textContent=T2.t;
   $('tipList').innerHTML=T2.items.map(([h,b,key])=>`<li class="${key?'key':''}"><b>${h}</b><span>${b}</span></li>`).join('');
-  $('tip').hidden=false;tipOn=true;paused=true;$('tipOk').focus();}
+  $('tip').hidden=false;tipOn=true;paused=true;$('tipOk').focus({preventScroll:true});}
 function closeTip(){if(!tipOn)return;tipOn=false;$('tip').hidden=true;paused=menuOpen||!$('note').hidden||!!dlg||chapOn;for(const k in keys)keys[k]=false;}
 $('tipOk').addEventListener('click',closeTip);
 function bossHint(z){const hint=$('bossHint');let t='',al=false;
@@ -3469,7 +3554,7 @@ function endGame(win){
   $('endTitle').textContent=title;$('endText').textContent=text;$('endEpi').textContent=win?epilogue():'';$('dlg').hidden=true;dlg=null;endT=0;
   const bk=zs.filter(z=>z.boss&&!z.alive).length;
   $('endStats').innerHTML=`<span>存活時間<b>${mm}:${ss}</b></span><span>擊倒<b>${kills}</b></span><span>頭目<b>${bk}/3</b></span><span>紙條<b>${notesRead.size}/8</b></span>`;
-  if(win){playEnd();}else{$('end').hidden=false;$('retryBtn').hidden=!cp;$('retryBtn').textContent=cp?'從'+CHAPS[cp.chap].no.replace(/ /g,'')+'開頭重來':'';(cp?$('retryBtn'):$('againBtn')).focus();}
+  if(win){playEnd();}else{$('end').hidden=false;$('retryBtn').hidden=!cp;$('retryBtn').textContent=cp?'從'+CHAPS[cp.chap].no.replace(/ /g,'')+'開頭重來':'';(cp?$('retryBtn'):$('againBtn')).focus({preventScroll:true});}
 }
 function startGame(){$('truth').hidden=true;$('outro').hidden=true;$('end').hidden=true;menuOpen=false;$('menu').hidden=true;$('title').hidden=true;if(!restoring)cp=null;init();$('hud').hidden=false;$('touch').hidden=!isTouch;for(const k in keys)keys[k]=false;}
 $('startBtn').addEventListener('click',()=>{initAudio();playCut();});
@@ -3477,25 +3562,25 @@ $('againBtn').addEventListener('click',()=>{initAudio();$('end').hidden=true;cp=
 $('retryBtn').addEventListener('click',()=>{initAudio();$('end').hidden=true;continueCP();});
 $('replayBtn').addEventListener('click',()=>{initAudio();playCut();});
 $('titleBtn').addEventListener('click',toTitle);
-$('truthNext').addEventListener('click',()=>{$('truth').hidden=true;$('end').hidden=false;$('retryBtn').hidden=true;$('againBtn').focus();});
+$('truthNext').addEventListener('click',()=>{$('truth').hidden=true;$('end').hidden=false;$('retryBtn').hidden=true;$('againBtn').focus({preventScroll:true});});
 $('pauseBtn').addEventListener('click',()=>{initAudio();openMenu();});
 $('mResume').addEventListener('click',closeMenu);
 $('mHelp').addEventListener('click',()=>{$('mHelpBox').hidden=!$('mHelpBox').hidden;});
 $('mRestart').addEventListener('click',()=>{closeMenu();cp=null;startGame();});
 $('mRetry').addEventListener('click',()=>{closeMenu();continueCP();});
 $('mQuit').addEventListener('click',toTitle);
-$('helpBtn').addEventListener('click',()=>{initAudio();$('help').hidden=false;$('helpClose').focus();});
+$('helpBtn').addEventListener('click',()=>{initAudio();$('help').hidden=false;$('helpClose').focus({preventScroll:true});});
 let replay=null;
 $('chapList').innerHTML=CHAPS.slice(1).map((C,i)=>`<button class="tcard" type="button" data-n="${i+1}"><b>${C.no}　${C.t}</b><span>${C.s}</span><i>${i?'附 '+['','鐵管','鐵管・鑰匙串','鐵管・鑰匙串','鐵管・鑰匙・油壓剪'][i]:'從頭開始'}</i></button>`).join('');
-$('chapBtn').addEventListener('click',()=>{initAudio();$('chapSel').hidden=false;$('chapList').querySelector('.tcard').focus();});
-$('chapClose').addEventListener('click',()=>{$('chapSel').hidden=true;$('chapBtn').focus();});
+$('chapBtn').addEventListener('click',()=>{initAudio();$('chapSel').hidden=false;$('chapList').querySelector('.tcard').focus({preventScroll:true});});
+$('chapClose').addEventListener('click',()=>{$('chapSel').hidden=true;$('chapBtn').focus({preventScroll:true});});
 document.querySelectorAll('#chapList .tcard').forEach(b=>b.addEventListener('click',()=>startAtChapter(+b.dataset.n)));
 function startAtChapter(n){initAudio();$('chapSel').hidden=true;
   if(n===1){cp=null;playCut();return;}
   cp={chap:n,pipe:true,key:n>=3,cutter:n>=5,band:n>=5?3:2,bat:100,F:{},notes:[],npc:[],dead:n>=5?['teacher','janitor']:n>=3?['teacher']:[],taken:[],kills:0};
   continueCP();showMsg('從'+CHAPS[n].no.replace(/ /g,'')+'「'+CHAPS[n].t+'」開始。',3.5);}
-$('theaterBtn').addEventListener('click',()=>{initAudio();$('theater').hidden=false;$('theater').querySelector('.tcard').focus();});
-$('theaterClose').addEventListener('click',()=>{$('theater').hidden=true;$('theaterBtn').focus();});
+$('theaterBtn').addEventListener('click',()=>{initAudio();$('theater').hidden=false;$('theater').querySelector('.tcard').focus({preventScroll:true});});
+$('theaterClose').addEventListener('click',()=>{$('theater').hidden=true;$('theaterBtn').focus({preventScroll:true});});
 document.querySelectorAll('#theater .tcard').forEach(b=>b.addEventListener('click',()=>playReplay(b.dataset.k)));
 function playReplay(k){initAudio();$('theater').hidden=true;replay=k;
   if(k==='open'){playCut();return;}
@@ -3510,12 +3595,25 @@ function playReplay(k){initAudio();$('theater').hidden=true;replay=k;
     P.x=25*T;P.y=38.9*T;P.a=Math.PI/2;P.cutter=true;P.hp=999;cam.x=P.x;cam.y=P.y;t2Seen=false;t2On=false;P.cut=.3;
     for(const z of zs){if(z.kind==='principal'){z.alive=true;z.x=33*T;z.y=36.8*T;z.home={x:z.x,y:z.y};z.awake=true;scnSeen.principal=true;z.intro=true;z.state='wander';continue;}if(z.boss||Math.hypot(z.x-P.x,z.y-P.y)<500)z.alive=false;}
     setTimeout(()=>{if(replay==='t2'&&!t2On&&!cine)startT2Cine();},600);}}
-function endReplay(){replay=null;toTitle();$('theaterBtn').focus();}
+function endReplay(){replay=null;toTitle();$('theaterBtn').focus({preventScroll:true});}
 $('helpClose').addEventListener('click',()=>{$('help').hidden=true;});
 $('cine').addEventListener('click',()=>{cineTap=true;});
 $('phClose').addEventListener('click',closePhone);
 $('fpGo').addEventListener('click',fpBegin);{const hb=$('fpH');const on=e=>{e.preventDefault();fpIn.h=true;},off=()=>{fpIn.h=false;};hb.addEventListener('pointerdown',on);for(const ev of ['pointerup','pointercancel','pointerleave'])hb.addEventListener(ev,off);hb.addEventListener('contextmenu',e=>e.preventDefault());}for(const [id,k] of [['fpL','l'],['fpR','r']])$(id).addEventListener('pointerdown',e=>{e.preventDefault();fpIn[k]=true;});
 
+
+// ---- mobile: fullscreen + rotate hint ----
+(()=>{const de=document.documentElement;const can=!!(de.requestFullscreen||de.webkitRequestFullscreen);const ios=/iPhone|iPod/.test(navigator.userAgent);
+  const standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone;
+  const coarse=matchMedia('(pointer:coarse)').matches;
+  const rh=$('rotHint');if(rh&&coarse){rh.hidden=false;if(ios&&!standalone){rh.querySelector('span').innerHTML='把手機<em>橫放</em>玩。iPhone 可按「分享 → 加入主畫面」，從主畫面打開就是全螢幕。';}}
+  const isFs=()=>!!(document.fullscreenElement||document.webkitFullscreenElement);
+  const sync=()=>{for(const id of ['fsBtn','mFs']){const b=$(id);if(!b)continue;b.hidden=!(can&&coarse&&!standalone);b.textContent=isFs()?'離開全螢幕':'全螢幕';}};
+  const toggle=async()=>{try{if(isFs()){await (document.exitFullscreen||document.webkitExitFullscreen).call(document);}else{await (de.requestFullscreen||de.webkitRequestFullscreen).call(de,{navigationUI:'hide'});try{await screen.orientation.lock('landscape');}catch(e){}}}catch(e){}setTimeout(()=>{sync();try{resize();}catch(e){}},250);};
+  for(const id of ['fsBtn','mFs']){const b=$(id);if(b)b.addEventListener('click',toggle);}
+  document.addEventListener('fullscreenchange',sync);document.addEventListener('webkitfullscreenchange',sync);sync();
+  addEventListener('orientationchange',()=>setTimeout(()=>{try{resize();}catch(e){}},300));
+})();
 window.__G={drawArt,imOK,drawPortrait,drawHuman,drawCrawler,drawBossM,drawNurse,drawNursePortrait,drawTeacherPortrait,drawJanitorPortrait,drawPrincipalPortrait,drawJiaoPortrait,drawTeacher2,drawTeacher2Portrait,drawThirdForm,drawKey,lookFor,BOSS,NPC_DEF,HERO,GATEZ,MEM,NURSE_L,SPR,setTime:v=>{time=v;}};
 resize();
 const go=()=>{$('cgrain').style.backgroundImage=$('grain').style.backgroundImage;makeCover();buildMap();buildFloor();P=null;zs=[];items=[];lights=[];cam.x=24*T;cam.y=18*T;shake=0;deadT=0;requestAnimationFrame(frame);};
@@ -3623,8 +3721,8 @@ function loop(now){const dt=Math.min(.05,(now-last)/1000);last=now;t+=dt;acc+=dt
     r.sc.setTransform(dpr,0,0,dpr,0,0);r.sc.clearRect(0,0,200,360);r.d.S(r.sc,200,360,t);}}
   if(!ov.hidden)requestAnimationFrame(loop);else{loopOn=false;G.setTime(saveT);}}
 window.__galLoop=()=>{if(loopOn)return;loopOn=true;last=performance.now();requestAnimationFrame(loop);};}
-function openGal(){saveT=typeof time!=='undefined'?time:0;ov.hidden=false;ov.scrollTop=0;if(!inited){inited=true;initGal();}window.__galLoop&&window.__galLoop();document.getElementById('galClose').focus();}
-function closeGal(){ov.hidden=true;const b=document.getElementById('galBtn');if(b)b.focus();}
+function openGal(){saveT=typeof time!=='undefined'?time:0;ov.hidden=false;ov.scrollTop=0;if(!inited){inited=true;initGal();}window.__galLoop&&window.__galLoop();document.getElementById('galClose').focus({preventScroll:true});}
+function closeGal(){ov.hidden=true;const b=document.getElementById('galBtn');if(b)b.focus({preventScroll:true});}
 document.getElementById('galBtn').addEventListener('click',openGal);document.getElementById('galClose').addEventListener('click',closeGal);
 addEventListener('keydown',e=>{if(!ov.hidden&&e.key==='Escape'){e.stopPropagation();closeGal();}},true);
 ov.addEventListener('keydown',e=>e.stopPropagation());ov.addEventListener('pointerdown',e=>e.stopPropagation());
